@@ -1,5 +1,5 @@
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
-import { SearchPhrase } from "../types/types";
+import { SearchTerm } from "../types/types";
 
 const VALUE_MIN_LENGTH = 3;
 const VALUE_MAX_LENGTH = 50;
@@ -9,8 +9,8 @@ const VALUE_DUPLICATE_MESSAGE = "No duplicates allowed.";
 type FormErrorMessage = string;
 
 type Props = {
-  initialValues?: SearchPhrase[];
-  onFormSubmit?: (values: SearchPhrase[]) => void;
+  initialValues?: SearchTerm[];
+  onFormSubmit?: (values: SearchTerm[]) => void;
 };
 
 const validateValue = (value: string): boolean => {
@@ -45,9 +45,9 @@ export const SearchForm = ({ initialValues, onFormSubmit }: Props) => {
 
   useEffect(() => {
     if (initialValues?.length === values.length) {
-      const cleaned = initialValues.filter((value) => validateValue(value));
-      if (cleaned.length === values.length) {
-        setValues(cleaned.map((value) => value));
+      const valid = initialValues.filter((value) => validateValue(value));
+      if (valid.length === values.length) {
+        setValues(valid.map((value) => value));
       }
     }
   }, [initialValues]);
@@ -73,8 +73,8 @@ export const SearchForm = ({ initialValues, onFormSubmit }: Props) => {
   return (
     <form className="SearchForm box-outline mt-4" onSubmit={handleSubmit}>
       <h2 className="mb-4">
-        Enter two <strong>words</strong> or <strong>phrases</strong> to see
-        which one is more popular.
+        Put two <strong>words</strong> or <strong>expressions</strong> <br />
+        head-to-head to see which one is more widely accepted.
       </h2>
 
       <div className="field-group">
@@ -88,9 +88,7 @@ export const SearchForm = ({ initialValues, onFormSubmit }: Props) => {
           className="form-control"
         />
       </div>
-
       <div className="versus-text my-2">vs</div>
-
       <div className="field-group">
         <input
           type="text"
@@ -102,13 +100,11 @@ export const SearchForm = ({ initialValues, onFormSubmit }: Props) => {
           className="form-control"
         />
       </div>
-
       {errorMessage && (
         <div className="alert alert-danger mt-3 fs-5" role="alert">
           <i className="fa fa-triangle-exclamation"></i> {errorMessage}
         </div>
       )}
-
       <button type="submit" className="btn btn-link mt-2">
         Go!
       </button>

@@ -4,7 +4,7 @@ import { Suspense } from "react";
 export const metadata: Metadata = {
   title: "What Do People Say?",
   description:
-    "Enter two words or phrases to see which one is more popular. For example, 'Jordan is the GOAT' vs. 'LeBron is the GOAT'",
+    "Compare two words or expressions to see which one is more widely accepted. For example, 'Jordan is the GOAT' vs. 'LeBron is the GOAT'",
 };
 
 export default function RootLayout({

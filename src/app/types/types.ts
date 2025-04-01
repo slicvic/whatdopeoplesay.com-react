@@ -1,4 +1,4 @@
-export type SearchPhrase = string;
+export type SearchTerm = string;
 
 export type AIResults = {
   winner: number;

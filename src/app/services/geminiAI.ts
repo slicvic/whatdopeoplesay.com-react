@@ -1,36 +1,34 @@
 import axios from "axios";
-import { AIResults, SearchPhrase } from "../types/types";
+import { AIResults, SearchTerm } from "../types/types";
 
 const API_KEY = "AIzaSyCUePWyqyham0elOS5g9_0nsntCRcEGCS4";
 const BASE_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${API_KEY}`;
 const PROMPT = `
-Analyze and rank the following phrases based on their historical level of general acceptance and widespread use.
+Analyze and rank the following expressions based on their historical level of general acceptance and widespread use.
 
-Phrases to rank:
+Expressions to rank:
 
-{{PHRASES}}
+{{QUERY}}
 
 Provide a structured JSON object with the following keys:
 
-- "winner": The number corresponding to the phrase with the highest level of general acceptance and widespread use.
+- "winner": The number corresponding to the expression with the highest level of general acceptance and widespread use.
 - "analysis": A concise justification for your ranking.
 `;
 
-const preparePrompt = (searchPhrases: SearchPhrase[]): string => {
+const preparePrompt = (searchTerms: SearchTerm[]): string => {
   const prompt = PROMPT.replace(
-    "{{PHRASES}}",
-    searchPhrases
-      .map((searchPhrase, index) => `${index + 1}. ${searchPhrase}`)
-      .join("\n")
+    "{{QUERY}}",
+    searchTerms.map((term, index) => `${index + 1}. ${term}`).join("\n")
   );
   return prompt;
 };
 
 export const askAI = async (
-  searchPhrases: SearchPhrase[]
+  searchTerms: SearchTerm[]
 ): Promise<AIResults | null> => {
   let result = null;
-  const prompt = preparePrompt(searchPhrases);
+  const prompt = preparePrompt(searchTerms);
 
   try {
     const apiResponse = await axios({

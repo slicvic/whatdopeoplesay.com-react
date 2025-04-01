@@ -1,25 +1,21 @@
 import { useEffect, useState } from "react";
-import { AIResults, SearchPhrase } from "../types/types";
+import { AIResults, SearchTerm } from "../types/types";
 
 type Props = {
   results: AIResults;
-  searchPhrases: SearchPhrase[];
+  searchTerms: SearchTerm[];
   onBackClick: () => void;
 };
 
-export const SearchResults = ({
-  results,
-  searchPhrases,
-  onBackClick,
-}: Props) => {
+export const SearchResults = ({ results, searchTerms, onBackClick }: Props) => {
   const [shareUrl, setShareUrl] = useState("");
   const [didCopyShareUrl, setDidCopyShareUrl] = useState(false);
 
   useEffect(() => {
     const baseUrl = window.location.origin;
     const query = `?q=${encodeURIComponent(
-      searchPhrases[0]
-    )}&q=${encodeURIComponent(searchPhrases[1])}`;
+      searchTerms[0]
+    )}&q=${encodeURIComponent(searchTerms[1])}`;
     setShareUrl(baseUrl + query);
   }, []);
 
@@ -49,19 +45,19 @@ export const SearchResults = ({
             <small>{results.analysis}</small>
           </div>
         )}
-        {searchPhrases.map((searchPhrase, index) => {
+        {searchTerms.map((term, index) => {
           const isWinner = results.winner === index + 1;
           return (
             <li key={index} className={isWinner ? "winner" : ""}>
-              {!isWinner && searchPhrase}
+              {!isWinner && term}
               {isWinner && (
                 <div className="heading">
                   <i className="fas fa-check me-2"></i>
-                  {searchPhrase}
+                  {term}
                 </div>
               )}
               {isWinner && <small>{results.analysis}</small>}
-              {index < searchPhrases.length - 1 && (
+              {index < searchTerms.length - 1 && (
                 <div className="versus-text my-3">vs</div>
               )}
             </li>

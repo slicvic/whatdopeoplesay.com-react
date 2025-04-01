@@ -7,28 +7,28 @@ import { Logo } from "./components/Logo";
 import { SearchForm } from "./components/SearchForm";
 import { SearchSpinner } from "./components/SearchSpinner";
 import { SearchResults } from "./components/SearchResults";
-import { AIResults, SearchPhrase } from "./types/types";
+import { AIResults, SearchTerm } from "./types/types";
 import { useSearchParams } from "next/navigation";
 
 export default function Home() {
   const [isSearching, setIsSearching] = useState(false);
-  const [searchPhrases, setSearchPhrases] = useState<SearchPhrase[]>();
+  const [searchTerms, setSearchTerms] = useState<SearchTerm[]>();
   const [results, setResults] = useState<AIResults | null>();
   const urlParams = useSearchParams();
-  const urlSearchPhrases = urlParams.getAll("q");
+  const urlSearchTerms = urlParams.getAll("q");
 
   useEffect(() => {
-    if (urlSearchPhrases.length > 1) {
-      setSearchPhrases(urlSearchPhrases.slice(0, 2));
+    if (urlSearchTerms.length > 1) {
+      setSearchTerms(urlSearchTerms.slice(0, 2));
     }
-    if (urlSearchPhrases.length > 0) {
+    if (urlSearchTerms.length > 0) {
       window.history.replaceState(null, "", "/");
     }
   }, []);
 
-  const handleFormSubmit = async (values: SearchPhrase[]) => {
+  const handleFormSubmit = async (values: SearchTerm[]) => {
     setIsSearching(true);
-    setSearchPhrases(values);
+    setSearchTerms(values);
     const results = await askAI(values);
     if (results) {
       setResults(results);
@@ -46,17 +46,17 @@ export default function Home() {
 
       {!results && (
         <SearchForm
-          initialValues={searchPhrases}
+          initialValues={searchTerms}
           onFormSubmit={handleFormSubmit}
         ></SearchForm>
       )}
 
       {isSearching && <SearchSpinner></SearchSpinner>}
 
-      {results && searchPhrases && (
+      {results && searchTerms && (
         <SearchResults
           results={results}
-          searchPhrases={searchPhrases}
+          searchTerms={searchTerms}
           onBackClick={() => setResults(null)}
         ></SearchResults>
       )}
