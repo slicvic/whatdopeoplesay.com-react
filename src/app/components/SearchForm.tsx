@@ -73,8 +73,8 @@ export const SearchForm = ({ initialValues, onFormSubmit }: Props) => {
   return (
     <form className="SearchForm box-outline mt-4" onSubmit={handleSubmit}>
       <h2 className="mb-4">
-        Put two <strong>words</strong> or <strong>expressions</strong> <br />
-        head-to-head to see which one is more widely accepted.
+        Match up two <strong>words</strong> or <strong>expressions</strong>
+        <br /> to see which is more widely accepted.
       </h2>
 
       <div className="field-group">
