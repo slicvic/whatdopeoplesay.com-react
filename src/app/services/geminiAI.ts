@@ -4,16 +4,16 @@ import { AIResults, SearchTerm } from "../types/types";
 const API_KEY = "AIzaSyCUePWyqyham0elOS5g9_0nsntCRcEGCS4";
 const BASE_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${API_KEY}`;
 const PROMPT = `
-Analyze and rank the following expressions based on their historical level of general acceptance and widespread use.
+Analyze and rank the following items based on their level of general acceptance, recognition, and widespread use across various demographics, industries, or regions.
 
-Expressions to rank:
+Items to rank:
 
 {{QUERY}}
 
-Provide a structured JSON object with the following keys:
+Please return a structured JSON object with the following keys:
 
-- "winner": The number corresponding to the expression with the highest level of general acceptance and widespread use.
-- "analysis": A concise justification for your ranking.
+"winner": The number corresponding to the item with the highest level of general acceptance and widespread use.
+"analysis": A brief explanation justifying your ranking, detailing why the 'winner' item is more widely accepted and recognized compared to the others.
 `;
 
 const preparePrompt = (searchTerms: SearchTerm[]): string => {

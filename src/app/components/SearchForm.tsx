@@ -2,7 +2,7 @@ import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { SearchTerm } from "../types/types";
 
 const VALUE_MIN_LENGTH = 3;
-const VALUE_MAX_LENGTH = 50;
+const VALUE_MAX_LENGTH = 200;
 const VALUE_INVALID_MESSAGE = "3 characters minimum, let's do this!";
 const VALUE_DUPLICATE_MESSAGE = "No duplicates allowed.";
 
@@ -73,7 +73,8 @@ export const SearchForm = ({ initialValues, onFormSubmit }: Props) => {
   return (
     <form className="SearchForm box-outline mt-4" onSubmit={handleSubmit}>
       <h2 className="mb-4">
-        Match up two <strong>words</strong> or <strong>expressions</strong>
+        Match up two <strong>words</strong>, <strong>phrases</strong>, or{" "}
+        <strong>statements</strong>
         <br /> to see which is more widely accepted.
       </h2>
 

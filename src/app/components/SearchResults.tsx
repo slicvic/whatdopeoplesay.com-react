@@ -49,9 +49,9 @@ export const SearchResults = ({ results, searchTerms, onBackClick }: Props) => {
           const isWinner = results.winner === index + 1;
           return (
             <li key={index} className={isWinner ? "winner" : ""}>
-              {!isWinner && term}
+              {!isWinner && <div className="entry-text">{term}</div>}
               {isWinner && (
-                <div className="heading">
+                <div className="heading entry-text">
                   <i className="fas fa-check me-2"></i>
                   {term}
                 </div>
