@@ -1,0 +1,66 @@
+.SearchResults {
+  text-align: center;
+
+  .results-section {
+    list-style-type: none;
+    font-weight: normal;
+
+    .tie {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .heading {
+        font-size: 2.5rem;
+        span {
+          @include text-highlight($success);
+        }
+      }
+
+      small {
+        font-size: 1rem;
+        max-width: 300px;
+        max-height: 100px;
+        overflow-y: scroll;
+      }
+    }
+
+    li {
+      font-size: 1.5rem;
+
+      small {
+        display: inline-block;
+        font-size: 1rem;
+        max-width: 300px;
+        max-height: 100px;
+        overflow-y: scroll;
+      }
+
+      &.winner {
+        .heading {
+          font-size: 2rem;
+          font-weight: 800;
+        }
+
+        i {
+          font-size: 2.5rem;
+          @include text-highlight($success);
+        }
+      }
+    }
+  }
+
+  .share-section {
+    .heading {
+      font-size: 1.25rem;
+      span {
+        @include text-highlight;
+      }
+    }
+  }
+
+  .back-button {
+    font-size: 2rem;
+    @include text-highlight;
+  }
+}

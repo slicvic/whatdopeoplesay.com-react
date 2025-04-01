@@ -1,0 +1,65 @@
+@import "base";
+@import "Logo";
+@import "SearchForm";
+@import "SearchSpinner";
+@import "SearchResults";
+
+body {
+  --bs-body-bg: #{$gray};
+  --bs-body-color: #000000;
+  --bs-body-font-family: "Roboto", sans-serif;
+}
+
+.app {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0px 16px;
+
+  > footer {
+    display: none;
+  }
+
+  .btn-link {
+    --bs-btn-font-weight: 700;
+    --bs-link-color: #000000;
+    --bs-link-hover-color: #000000;
+    font-family: "Special Elite", cursive;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.box-outline {
+  border: 4px solid #111;
+  padding: 32px;
+  text-align: center;
+}
+
+.versus-text {
+  color: $gray-3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.25rem;
+  font-weight: normal;
+
+  &::before,
+  &::after {
+    content: "";
+    flex: 1 0 0;
+    border-top: 2px solid;
+  }
+
+  &::before {
+    margin-right: 5px;
+  }
+
+  &::after {
+    margin-left: 5px;
+  }
+}

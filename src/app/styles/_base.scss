@@ -1,0 +1,20 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900");
+@import url("https://fonts.googleapis.com/css2?family=Special+Elite");
+
+$primary: #fbe446;
+$success: #0f0;
+$gray: #f7f7f7;
+$gray-2: #3c3c3b;
+$gray-3: #9aa5b1;
+$gray-4: #efeeec;
+$gray-5: #6e6d5f;
+
+@mixin text-highlight($color: $primary) {
+  background: linear-gradient(
+    transparent 50%,
+    transparent 0,
+    $color 0,
+    $color 85%,
+    transparent 0
+  );
+}

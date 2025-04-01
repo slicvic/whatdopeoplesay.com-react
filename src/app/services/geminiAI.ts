@@ -1,5 +1,5 @@
 import axios from "axios";
-import { AIResult, Phrase } from "../types/types";
+import { AIResults, SearchPhrase } from "../types/types";
 
 const API_KEY = "AIzaSyCUePWyqyham0elOS5g9_0nsntCRcEGCS4";
 const BASE_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${API_KEY}`;
@@ -16,17 +16,21 @@ Provide a structured JSON object with the following keys:
 - "analysis": A concise justification for your ranking.
 `;
 
-const preparePrompt = (phrases: Phrase[]): string => {
+const preparePrompt = (searchPhrases: SearchPhrase[]): string => {
   const prompt = PROMPT.replace(
     "{{PHRASES}}",
-    phrases.map((phrase, index) => `${index + 1}. ${phrase}`).join("\n")
+    searchPhrases
+      .map((searchPhrase, index) => `${index + 1}. ${searchPhrase}`)
+      .join("\n")
   );
   return prompt;
 };
 
-export const askAI = async (phrases: Phrase[]): Promise<AIResult | null> => {
+export const askAI = async (
+  searchPhrases: SearchPhrase[]
+): Promise<AIResults | null> => {
   let result = null;
-  const prompt = preparePrompt(phrases);
+  const prompt = preparePrompt(searchPhrases);
 
   try {
     const apiResponse = await axios({
@@ -53,14 +57,13 @@ export const askAI = async (phrases: Phrase[]): Promise<AIResult | null> => {
     if (text && typeof text === "string") {
       const parsed = JSON.parse(text);
       if (
-        parsed?.winner &&
         (typeof parsed.winner === "number" ||
           typeof parsed.winner === "string") &&
         parsed?.analysis &&
         typeof parsed.analysis === "string"
       ) {
         result = {
-          winner: parsed.winner,
+          winner: Number(parsed.winner),
           analysis: parsed.analysis,
         };
       }

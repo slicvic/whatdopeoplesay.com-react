@@ -1,0 +1,24 @@
+.Logo {
+  font-family: "Special Elite", cursive;
+  position: relative;
+  display: flex;
+  justify-content: center;
+
+  h1 {
+    font-size: 6rem;
+    margin-bottom: 0;
+    span {
+      @include text-highlight;
+    }
+  }
+
+  h4 {
+    position: absolute;
+    bottom: 7px;
+    margin-bottom: 0;
+    font-size: 1.25rem;
+    font-style: italic;
+    font-weight: 600;
+    color: #222222;
+  }
+}

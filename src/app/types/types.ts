@@ -1,6 +1,6 @@
-export type Phrase = string;
+export type SearchPhrase = string;
 
-export type AIResult = {
+export type AIResults = {
   winner: number;
   analysis: string;
 };
