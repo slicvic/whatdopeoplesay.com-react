@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useEffect, useRef, useState } from "react";
+import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { SearchPhrase } from "../types/types";
 
 const VALUE_MIN_LENGTH = 3;
@@ -13,7 +13,7 @@ type Props = {
   onFormSubmit?: (values: SearchPhrase[]) => void;
 };
 
-const validateValue = (value: any): boolean => {
+const validateValue = (value: string): boolean => {
   if (typeof value !== "string") {
     return false;
   }
@@ -64,7 +64,7 @@ export const SearchForm = ({ initialValues, onFormSubmit }: Props) => {
   const handleFieldChange = (event: ChangeEvent<HTMLInputElement>) => {
     const target = event.target;
     const index = Number(target.dataset.index);
-    let newValues = [...values];
+    const newValues = [...values];
     newValues[index] = target.value;
     setValues(newValues);
     setErrorMessage("");

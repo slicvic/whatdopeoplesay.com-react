@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { AIResults, SearchPhrase } from "../types/types";
 
 type Props = {
@@ -33,7 +33,9 @@ export const SearchResults = ({
     try {
       await window.navigator.clipboard.writeText(shareUrl);
       setDidCopyShareUrl(true);
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (

@@ -68,7 +68,9 @@ export const askAI = async (
         };
       }
     }
-  } catch (error) {}
+  } catch (error) {
+    console.log(error);
+  }
 
   return result;
 };

@@ -18,21 +18,13 @@ export default function Home() {
   const urlSearchPhrases = urlParams.getAll("q");
 
   useEffect(() => {
-    if (isValidUrlSearchPhrases(urlSearchPhrases)) {
-      setSearchPhrases(urlSearchPhrases);
+    if (urlSearchPhrases.length > 1) {
+      setSearchPhrases(urlSearchPhrases.slice(0, 2));
+    }
+    if (urlSearchPhrases.length > 0) {
       window.history.replaceState(null, "", "/");
     }
   }, []);
-
-  const isValidUrlSearchPhrases = (phrases: any) => {
-    if (phrases?.length === 2) {
-      return (
-        phrases.filter((phrase: any) => phrase && typeof phrase === "string")
-          .length === 2
-      );
-    }
-    return false;
-  };
 
   const handleFormSubmit = async (values: SearchPhrase[]) => {
     setIsSearching(true);
