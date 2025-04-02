@@ -36,7 +36,7 @@ export const SearchResults = ({ results, searchTerms, onBackClick }: Props) => {
 
   return (
     <div className="SearchResults">
-      <div className="results-section wdps-box my-4">
+      <div className="results-section my-4">
         {!results.winner && (
           <div className="results-row tie mb-3">
             <div className="heading">

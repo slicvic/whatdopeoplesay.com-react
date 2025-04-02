@@ -7,6 +7,8 @@
     flex-direction: column;
     align-items: center;
     font-weight: normal;
+    border: 4px solid #111;
+    padding: 16px;
   }
 
   .results-row {
@@ -70,5 +72,11 @@
   .back-button {
     font-size: 2rem;
     @include text-highlight;
+  }
+
+  @media (min-width: 768px) {
+    .results-section {
+      padding: 32px;
+    }
   }
 }

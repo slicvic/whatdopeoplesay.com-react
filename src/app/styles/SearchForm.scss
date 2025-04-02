@@ -2,24 +2,17 @@
   max-width: 600px;
   text-align: center;
 
-  .wdps-box {
-    padding: 48px 48px 32px 48px;
-  }
-
   .form-control {
     text-align: center;
     font-size: 1.5rem;
-    padding: 10px 16px;
+    padding: 10px 12px;
     border-radius: 0;
-    & {
-      background-color: $gray-4;
-      border: 3px solid $gray-5;
-    }
+    border: 3px solid #111;
   }
 
   .versus-divider {
     font-size: 1.75rem;
-    font-weight: 300;
+    font-weight: normal;
     color: $gray-2;
     &::before,
     &::after {

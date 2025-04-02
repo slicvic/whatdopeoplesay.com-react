@@ -72,7 +72,7 @@ export const SearchForm = ({ initialValues, onFormSubmit }: Props) => {
 
   return (
     <div className="SearchForm">
-      <form action="#" className="wdps-box mt-4" onSubmit={handleSubmit}>
+      <form action="#" className="mt-4 mt-md-5" onSubmit={handleSubmit}>
         <div className="field-group">
           <input
             type="text"
@@ -85,7 +85,7 @@ export const SearchForm = ({ initialValues, onFormSubmit }: Props) => {
           />
         </div>
 
-        <div className="versus-divider my-2">vs</div>
+        <div className="versus-divider my-3">vs</div>
 
         <div className="field-group">
           <input
@@ -110,11 +110,11 @@ export const SearchForm = ({ initialValues, onFormSubmit }: Props) => {
         </button>
       </form>
 
-      <p className="mt-3 text-secondary">
+      <div className="mt-2 text-secondary">
         * Compare two{" "}
         <em>words, phrases, expressions, ideas, beliefs, opinions, or views</em>{" "}
         to see which is more widely accepted.
-      </p>
+      </div>
     </div>
   );
 };
