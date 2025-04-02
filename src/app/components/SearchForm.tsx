@@ -71,11 +71,17 @@ export const SearchForm = ({ initialValues, onFormSubmit }: Props) => {
   };
 
   return (
-    <form className="SearchForm box-outline mt-4" onSubmit={handleSubmit}>
+    <form
+      action="#"
+      className="SearchForm box-outline mt-4"
+      onSubmit={handleSubmit}
+    >
       <h2 className="mb-4">
-        Match up two <strong>words</strong>, <strong>phrases</strong>, or{" "}
-        <strong>statements</strong>
-        <br /> to see which is more widely accepted.
+        <div>
+          Match up two <strong>words</strong>, <strong>phrases</strong>, or{" "}
+          <strong>statements</strong>
+        </div>
+        <div>to see which is more widely accepted.</div>
       </h2>
 
       <div className="field-group">
@@ -89,7 +95,9 @@ export const SearchForm = ({ initialValues, onFormSubmit }: Props) => {
           className="form-control"
         />
       </div>
-      <div className="versus-text my-2">vs</div>
+
+      <div className="versus-divider my-2">vs</div>
+
       <div className="field-group">
         <input
           type="text"
@@ -101,11 +109,13 @@ export const SearchForm = ({ initialValues, onFormSubmit }: Props) => {
           className="form-control"
         />
       </div>
+
       {errorMessage && (
         <div className="alert alert-danger mt-3 fs-5" role="alert">
           <i className="fa fa-triangle-exclamation"></i> {errorMessage}
         </div>
       )}
+
       <button type="submit" className="btn btn-link mt-2">
         Go!
       </button>

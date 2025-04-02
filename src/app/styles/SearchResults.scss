@@ -1,51 +1,33 @@
 .SearchResults {
   text-align: center;
 
-  .entry-text {
-    width: 330px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
   .results-section {
     display: flex;
     flex-direction: column;
     align-items: center;
-    list-style-type: none;
     font-weight: normal;
+    max-width: 600px;
 
-    .tie {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-
-      .heading {
-        font-size: 2.5rem;
-        span {
-          @include text-highlight($success);
-        }
-      }
-
-      small {
-        font-size: 1rem;
-        max-height: 100px;
-        overflow-y: scroll;
-      }
-    }
-
-    li {
+    > div {
       font-size: 1.5rem;
 
       small {
         display: inline-block;
         font-size: 1rem;
-        max-width: 300px;
         max-height: 100px;
         overflow-y: scroll;
+        text-align: left;
+      }
+
+      &.versus-divider {
+        width: 100%;
       }
 
       &.winner {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
         .heading {
           font-size: 2rem;
           font-weight: 800;
@@ -54,6 +36,20 @@
         i {
           font-size: 2.5rem;
           @include text-highlight($success);
+        }
+      }
+
+      &.tie {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .heading {
+          font-size: 2.5rem;
+          font-weight: 800;
+          span {
+            @include text-highlight($success);
+          }
         }
       }
     }
@@ -65,6 +61,11 @@
       span {
         @include text-highlight;
       }
+    }
+
+    form {
+      max-width: 450px;
+      margin: 0 auto;
     }
   }
 

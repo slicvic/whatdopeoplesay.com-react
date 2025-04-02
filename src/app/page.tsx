@@ -61,7 +61,7 @@ export default function Home() {
         ></SearchResults>
       )}
 
-      <footer>
+      <footer style={{ display: "none" }}>
         <small>
           With <i className="fa fa-heart"></i> by
           <a href="https://www.slicvic.com">slicvic.com</a>

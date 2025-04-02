@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { AIResults, SearchTerm } from "../types/types";
 
 type Props = {
@@ -36,11 +36,11 @@ export const SearchResults = ({ results, searchTerms, onBackClick }: Props) => {
 
   return (
     <div className="SearchResults">
-      <ul className="results-section box-outline my-4">
+      <div className="results-section box-outline my-4">
         {!results.winner && (
           <div className="tie mb-3">
             <div className="heading">
-              <span>TIE!</span>
+              <span>Tie!</span>
             </div>
             <small>{results.analysis}</small>
           </div>
@@ -48,22 +48,21 @@ export const SearchResults = ({ results, searchTerms, onBackClick }: Props) => {
         {searchTerms.map((term, index) => {
           const isWinner = results.winner === index + 1;
           return (
-            <li key={index} className={isWinner ? "winner" : ""}>
-              {!isWinner && <div className="entry-text">{term}</div>}
-              {isWinner && (
-                <div className="heading entry-text">
-                  <i className="fas fa-check me-2"></i>
+            <Fragment key={index}>
+              <div className={isWinner ? "winner" : ""}>
+                <div className="heading">
+                  {isWinner && <i className="fas fa-check me-2"></i>}
                   {term}
                 </div>
-              )}
-              {isWinner && <small>{results.analysis}</small>}
+                {isWinner && <small>{results.analysis}</small>}
+              </div>
               {index < searchTerms.length - 1 && (
-                <div className="versus-text my-3">vs</div>
+                <div className="versus-divider my-3">vs</div>
               )}
-            </li>
+            </Fragment>
           );
         })}
-      </ul>
+      </div>
 
       <div className="share-section mb-4">
         <h6 className="heading">
