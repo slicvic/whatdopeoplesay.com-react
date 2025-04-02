@@ -1,12 +1,9 @@
 .SearchForm {
+  max-width: 600px;
   text-align: center;
 
-  h2 {
-    font-size: 1.75rem;
-    font-weight: 300;
-    strong {
-      font-weight: 800;
-    }
+  .wdps-box {
+    padding: 48px 48px 32px 48px;
   }
 
   .form-control {

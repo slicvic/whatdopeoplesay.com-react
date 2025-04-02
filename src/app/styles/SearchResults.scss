@@ -1,4 +1,5 @@
 .SearchResults {
+  max-width: 600px;
   text-align: center;
 
   .results-section {
@@ -6,51 +7,48 @@
     flex-direction: column;
     align-items: center;
     font-weight: normal;
-    max-width: 600px;
+  }
 
-    > div {
-      font-size: 1.5rem;
+  .results-row {
+    font-size: 1.5rem;
 
-      small {
-        display: inline-block;
-        font-size: 1rem;
-        max-height: 100px;
-        overflow-y: scroll;
-        text-align: left;
-      }
+    small {
+      display: inline-block;
+      font-size: 1rem;
+      max-height: 100px;
+      overflow-y: scroll;
+      text-align: left;
+    }
 
-      &.versus-divider {
-        width: 100%;
-      }
+    &.versus-divider {
+      width: 100%;
+    }
 
-      &.winner {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+    &.tie,
+    &.winner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
-        .heading {
-          font-size: 2rem;
-          font-weight: 800;
-        }
-
-        i {
-          font-size: 2.5rem;
+    &.tie {
+      .heading {
+        font-size: 2.5rem;
+        font-weight: 800;
+        span {
           @include text-highlight($success);
         }
       }
+    }
 
-      &.tie {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-
-        .heading {
-          font-size: 2.5rem;
-          font-weight: 800;
-          span {
-            @include text-highlight($success);
-          }
-        }
+    &.winner {
+      .heading {
+        font-size: 2rem;
+        font-weight: 800;
+      }
+      i {
+        font-size: 2.5rem;
+        @include text-highlight($success);
       }
     }
   }

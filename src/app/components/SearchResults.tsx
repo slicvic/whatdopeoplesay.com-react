@@ -36,9 +36,9 @@ export const SearchResults = ({ results, searchTerms, onBackClick }: Props) => {
 
   return (
     <div className="SearchResults">
-      <div className="results-section box-outline my-4">
+      <div className="results-section wdps-box my-4">
         {!results.winner && (
-          <div className="tie mb-3">
+          <div className="results-row tie mb-3">
             <div className="heading">
               <span>Tie!</span>
             </div>
@@ -49,7 +49,7 @@ export const SearchResults = ({ results, searchTerms, onBackClick }: Props) => {
           const isWinner = results.winner === index + 1;
           return (
             <Fragment key={index}>
-              <div className={isWinner ? "winner" : ""}>
+              <div className={`results-row ${isWinner ? "winner" : ""}`}>
                 <div className="heading">
                   {isWinner && <i className="fas fa-check me-2"></i>}
                   {term}
@@ -57,7 +57,7 @@ export const SearchResults = ({ results, searchTerms, onBackClick }: Props) => {
                 {isWinner && <small>{results.analysis}</small>}
               </div>
               {index < searchTerms.length - 1 && (
-                <div className="versus-divider my-3">vs</div>
+                <div className="results-row versus-divider my-3">vs</div>
               )}
             </Fragment>
           );

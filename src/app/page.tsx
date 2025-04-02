@@ -57,7 +57,10 @@ export default function Home() {
         <SearchResults
           results={results}
           searchTerms={searchTerms}
-          onBackClick={() => setResults(null)}
+          onBackClick={() => {
+            setSearchTerms(["", ""]);
+            setResults(null);
+          }}
         ></SearchResults>
       )}
 

@@ -71,54 +71,50 @@ export const SearchForm = ({ initialValues, onFormSubmit }: Props) => {
   };
 
   return (
-    <form
-      action="#"
-      className="SearchForm box-outline mt-4"
-      onSubmit={handleSubmit}
-    >
-      <h2 className="mb-4">
-        <div>
-          Match up two <strong>words</strong>, <strong>phrases</strong>, or{" "}
-          <strong>statements</strong>
+    <div className="SearchForm">
+      <form action="#" className="wdps-box mt-4" onSubmit={handleSubmit}>
+        <div className="field-group">
+          <input
+            type="text"
+            data-index="0"
+            value={values[0]}
+            maxLength={VALUE_MAX_LENGTH}
+            placeholder="Ex: Jordan is the GOAT"
+            onChange={handleFieldChange}
+            className="form-control"
+          />
         </div>
-        <div>to see which is more widely accepted.</div>
-      </h2>
 
-      <div className="field-group">
-        <input
-          type="text"
-          data-index="0"
-          value={values[0]}
-          maxLength={VALUE_MAX_LENGTH}
-          placeholder="Ex: Jordan is the GOAT"
-          onChange={handleFieldChange}
-          className="form-control"
-        />
-      </div>
+        <div className="versus-divider my-2">vs</div>
 
-      <div className="versus-divider my-2">vs</div>
-
-      <div className="field-group">
-        <input
-          type="text"
-          data-index="1"
-          value={values[1]}
-          maxLength={VALUE_MAX_LENGTH}
-          placeholder="Ex: LeBron is the GOAT"
-          onChange={handleFieldChange}
-          className="form-control"
-        />
-      </div>
-
-      {errorMessage && (
-        <div className="alert alert-danger mt-3 fs-5" role="alert">
-          <i className="fa fa-triangle-exclamation"></i> {errorMessage}
+        <div className="field-group">
+          <input
+            type="text"
+            data-index="1"
+            value={values[1]}
+            maxLength={VALUE_MAX_LENGTH}
+            placeholder="Ex: LeBron is the GOAT"
+            onChange={handleFieldChange}
+            className="form-control"
+          />
         </div>
-      )}
 
-      <button type="submit" className="btn btn-link mt-2">
-        Go!
-      </button>
-    </form>
+        {errorMessage && (
+          <div className="alert alert-danger mt-4 mb-0 fs-5" role="alert">
+            <i className="fa fa-triangle-exclamation"></i> {errorMessage}
+          </div>
+        )}
+
+        <button type="submit" className="btn btn-link mt-2">
+          Go!
+        </button>
+      </form>
+
+      <p className="mt-3 text-secondary">
+        * Compare two{" "}
+        <em>words, phrases, expressions, ideas, beliefs, opinions, or views</em>{" "}
+        to see which is more widely accepted.
+      </p>
+    </div>
   );
 };
