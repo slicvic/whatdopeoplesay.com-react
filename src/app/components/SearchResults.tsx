@@ -92,7 +92,7 @@ export const SearchResults = ({ results, searchTerms, onBackClick }: Props) => {
         className="back-button btn btn-link"
         onClick={onBackClick}
       >
-        Try again!
+        Try another!
       </button>
     </div>
   );
