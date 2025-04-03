@@ -101,7 +101,7 @@ export const SearchForm = ({ initialValues, onFormSubmit }: Props) => {
 
         {errorMessage && (
           <div className="alert alert-danger mt-4 mb-0 fs-5" role="alert">
-            <i className="fa fa-triangle-exclamation"></i> {errorMessage}
+            <i className="fa fa-triangle-exclamation me-1"></i> {errorMessage}
           </div>
         )}
 
