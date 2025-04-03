@@ -110,10 +110,15 @@ export const SearchForm = ({ initialValues, onFormSubmit }: Props) => {
         </button>
       </form>
 
-      <div className="mt-2 text-secondary">
-        <i className="fa fa-info-circle me-1"></i> Compare two{" "}
-        <em>words, phrases, expressions, ideas, beliefs, opinions, or views</em>{" "}
-        to see which is more widely accepted.
+      <div className="info-text mt-2 text-secondary">
+        <i className="fa fa-info-circle me-2 fs-5"></i>
+        <span>
+          Compare two{" "}
+          <em>
+            words, phrases, expressions, ideas, beliefs, opinions, or views
+          </em>{" "}
+          to see which is more widely accepted.
+        </span>
       </div>
     </div>
   );

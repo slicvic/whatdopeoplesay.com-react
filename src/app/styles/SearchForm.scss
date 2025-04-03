@@ -24,4 +24,12 @@
     font-size: 3rem;
     @include text-highlight;
   }
+
+  .info-text {
+    display: flex;
+    text-align: left;
+    i {
+      margin-top: 2px;
+    }
+  }
 }
