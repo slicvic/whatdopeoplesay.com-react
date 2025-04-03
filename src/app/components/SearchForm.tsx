@@ -111,7 +111,7 @@ export const SearchForm = ({ initialValues, onFormSubmit }: Props) => {
       </form>
 
       <div className="mt-2 text-secondary">
-        * Compare two{" "}
+        <i className="fa fa-info-circle me-1"></i> Compare two{" "}
         <em>words, phrases, expressions, ideas, beliefs, opinions, or views</em>{" "}
         to see which is more widely accepted.
       </div>
