@@ -1,7 +1,7 @@
 import axios from "axios";
 import { AIResults, SearchTerm } from "../types/types";
 
-const API_KEY = "AIzaSyCUePWyqyham0elOS5g9_0nsntCRcEGCS4";
+const API_KEY = "AIzaSyASF1jrBnB4yjC4QICgidyjTNtX_asVzRQ";
 const BASE_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${API_KEY}`;
 const PROMPT = `
 Analyze and rank the following items based on their level of general acceptance, recognition, and widespread use across various demographics, industries, or regions.
