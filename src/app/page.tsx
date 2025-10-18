@@ -14,6 +14,7 @@ export default function Home() {
   const [isSearching, setIsSearching] = useState(false);
   const [searchTerms, setSearchTerms] = useState<SearchTerm[]>();
   const [results, setResults] = useState<AIResults | null>();
+  const [apiError, setApiError] = useState("");
   const urlParams = useSearchParams();
   const urlSearchTerms = urlParams.getAll("q");
 
@@ -29,11 +30,13 @@ export default function Home() {
   const handleFormSubmit = async (values: SearchTerm[]) => {
     setIsSearching(true);
     setSearchTerms(values);
-    const results = await askAI(values);
-    if (results) {
+    setApiError("");
+    try {
+      const results = await askAI(values);
       setResults(results);
-    } else {
-      // TODO handle
+    } catch (error) {
+      setApiError("Something went wrong. Please try again.");
+      console.log(error);
     }
     setIsSearching(false);
   };
@@ -43,6 +46,12 @@ export default function Home() {
       <header>
         <Logo />
       </header>
+
+      {apiError && (
+        <div className="alert alert-danger mt-4 mb-0 fs-5" role="alert">
+          <i className="fa fa-triangle-exclamation me-1"></i> {apiError}
+        </div>
+      )}
 
       {!results && (
         <SearchForm

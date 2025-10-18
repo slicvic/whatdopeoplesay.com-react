@@ -1,8 +1,8 @@
 import axios from "axios";
 import { AIResults, SearchTerm } from "../types/types";
 
-const API_KEY = "AIzaSyASF1jrBnB4yjC4QICgidyjTNtX_asVzRQ";
-const BASE_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${API_KEY}`;
+const API_KEY = "AIzaSyAd6ZclxAX_ZiYfR1Put4oejUoMYTbKZT4";
+const BASE_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${API_KEY}`;
 const PROMPT = `
 Analyze and rank the following items based on their level of general acceptance, recognition, and widespread use across various demographics, industries, or regions.
 
@@ -29,46 +29,42 @@ export const askAI = async (
 ): Promise<AIResults | null> => {
   let result = null;
   const prompt = preparePrompt(searchTerms);
-
-  try {
-    const apiResponse = await axios({
-      method: "post",
-      url: BASE_URL,
-      data: {
-        generationConfig: {
-          response_mime_type: "application/json",
-        },
-        contents: [
-          {
-            parts: [
-              {
-                text: prompt,
-              },
-            ],
-          },
-        ],
+  
+  const apiResponse = await axios({
+    method: "post",
+    url: BASE_URL,
+    data: {
+      generationConfig: {
+        response_mime_type: "application/json",
       },
-    });
+      contents: [
+        {
+          parts: [
+            {
+              text: prompt,
+            },
+          ],
+        },
+      ],
+    },
+  });
 
-    const text = apiResponse.data?.candidates?.[0]?.content?.parts?.[0]?.text;
+  const text = apiResponse.data?.candidates?.[0]?.content?.parts?.[0]?.text;
 
-    if (text && typeof text === "string") {
-      const parsed = JSON.parse(text);
-      if (
-        (typeof parsed.winner === "number" ||
-          typeof parsed.winner === "string") &&
-        parsed?.analysis &&
-        typeof parsed.analysis === "string"
-      ) {
-        result = {
-          winner: Number(parsed.winner),
-          analysis: parsed.analysis,
-        };
-      }
+  if (text && typeof text === "string") {
+    const parsed = JSON.parse(text);
+    if (
+      (typeof parsed.winner === "number" ||
+        typeof parsed.winner === "string") &&
+      parsed?.analysis &&
+      typeof parsed.analysis === "string"
+    ) {
+      result = {
+        winner: Number(parsed.winner),
+        analysis: parsed.analysis,
+      };
     }
-  } catch (error) {
-    console.log(error);
   }
-
+ 
   return result;
 };
