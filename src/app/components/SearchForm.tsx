@@ -117,7 +117,7 @@ export const SearchForm = ({ initialValues, onFormSubmit }: Props) => {
           <em>
             words, phrases, expressions, ideas, beliefs, opinions, or views
           </em>{" "}
-          to see which is more widely accepted.
+          to see which one's more popular.
         </span>
       </div>
     </div>
